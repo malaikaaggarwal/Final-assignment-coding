@@ -3,15 +3,14 @@ replace center1distance = subinstr(center1distance, "miles", "",.)
 replace center1distance = subinstr(center1distance, "mile", "",.)
 destring center1distance, gen (numcenter1distancen)
 *this command would remove the word miles from the string variable center1distance*
-replace center1distance = subinstr(center2distance, "miles", "",.)
+replace center2distance = subinstr(center2distance, "miles", "",.)
 replace center2distance = subinstr(center2distance, "mile", "",.)
 destring center2distance, gen (num2center2distancen)
 
 *to check for missing values
 mdesc numcenter1distancen num2center2distancen
-*to replace missing value 
-replace numcenter1distancen = 0 if missing(numcenter1distancen)
-replace num2center2distancen = 0 if missing(num2center2distancen)
+*to drop missing value 
+drop if missing(num2center2distancen)
 
 
 *creating id for countries
@@ -57,6 +56,8 @@ replace id = 37 if addresscountryname== "Fiumicino (RM)"
 replace id = 39 if addresscountryname== "Egypt"
 
 sort id
+save clean-data
+
 
 
 
