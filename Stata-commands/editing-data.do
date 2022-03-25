@@ -12,6 +12,9 @@ mdesc numcenter1distancen num2center2distancen
 *to drop missing value 
 drop if missing(num2center2distancen)
 
+*to label variables
+lab var numcenter1distancen "Distance from center"
+lab var num2center2distancen "Distance from other attractions"
 
 *creating id for countries
 gen id=.
@@ -54,6 +57,8 @@ replace id = 36 if addresscountryname== "Ciampino"
 replace id = 37 if addresscountryname== "Fiumicino"
 replace id = 37 if addresscountryname== "Fiumicino (RM)"
 replace id = 39 if addresscountryname== "Egypt"
+
+lab var id "country id"
 
 sort id
 save clean-data
