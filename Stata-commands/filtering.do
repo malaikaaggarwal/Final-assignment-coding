@@ -5,4 +5,5 @@
 
 *transforming variable starrating into percentage
 gen starrate2 = starrating/5*100
+lab var starrate2 "starrating in %"
 save clean-data, replace
